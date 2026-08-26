@@ -153,7 +153,7 @@ const q = query(
 Agora a query filtra os documentos pelo campo `userId`, retornando apenas os personagens pertencentes ao usuário autenticado (`uid`).
 
 ### Screenshot ou resultado
-Pasta erro 4gi
+Pasta erro 4
 
 
 ---
