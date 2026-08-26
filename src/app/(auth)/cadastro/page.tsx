@@ -27,9 +27,8 @@ export default function CadastroPage() {
     e.preventDefault();
     setErro("");
 
-    // 🐛 BUG 03 — compara `senha` com `nome` ao invés de `confirmarSenha`
-    // Correto seria: if (senha !== confirmarSenha)
-    if (senha !== nome) {
+
+    if (senha !== confirmarSenha) {
       setErro("As senhas não coincidem.");
       return;
     }

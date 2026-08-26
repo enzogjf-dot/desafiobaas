@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import type { Classe, Personagem } from "@/types";
+import { where } from "firebase/firestore";
 
 // ---------------------------------------------------------------------------
 // LISTAR — BUG 04 🐛
@@ -29,8 +30,10 @@ import type { Classe, Personagem } from "@/types";
 // cada usuário veja apenas os seus próprios personagens.
 // ---------------------------------------------------------------------------
 export async function listarPersonagens(_uid: string): Promise<Personagem[]> {
-  // 🐛 BUG 04 — query sem filtro de userId
-  const q = query(collection(db, "personagens"));
+  const q = query(
+  collection(db, "personagens"),
+  where("userId", "==", _uid)
+);
 
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...d.data() } as Personagem));
